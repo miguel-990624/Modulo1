@@ -17,7 +17,7 @@ def calcular () :
     print(f"Para el producto {nombre}, el precio total es de: ${total:.2f}, con el valor del descuento ${totalDescontado:.2f}")
     
 """
-En stack overflow encontre que lo mas normal es EAFP, que seria usar el metodo try, except, pero tambien
+En stack overflow encontre que lo mas normal es EAFP(easier ask forgiveness than permission), que seria usar el metodo try, except, pero tambien
 ponian que existe el metodo replace, que me va a buscar el punto decimal, lo va a quitar, y solo lo va a hacer 1 vez
 de modo que cuando el cliente ingrese un numero asi tenga un decimal, lo va a reconocer como numero
 por que tambien estoy usando el metodo isdigit para verificar que sea un valor numerico.
