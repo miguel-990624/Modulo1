@@ -1,3 +1,7 @@
+"""
+El ejercicio esta en mi repositorio: https://github.com/miguel-990624/Modulo1
+"""
+
 print("Calculadora de compra")
 nombre = input("ingrese el nombre del producto deseado: ")
 unitario = input("ingrese el valor unitario del producto deseado: ")
