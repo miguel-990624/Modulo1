@@ -19,7 +19,9 @@ def calcular () :
 En stack overflow encontre que lo mas normal es EAFP, que seria usar el metodo try, except, pero tambien
 ponian que existe el metodo replace, que me va a buscar el punto decimal, lo va a quitar, y solo lo va a hacer 1 vez
 de modo que cuando el cliente ingrese un numero asi tenga un decimal, lo va a reconocer como numero
-por que tambien estoy usando el metodo isdigit para verificar que sea un valor numerico
+por que tambien estoy usando el metodo isdigit para verificar que sea un valor numerico.
+https://stackoverflow.com/questions/4138202/using-isdigit-for-floats
+https://www.w3schools.com/python/ref_string_replace.asp
 """
 if(unitario.replace(".", "", 1).isdigit()):
     """
