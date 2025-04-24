@@ -21,8 +21,11 @@ En stack overflow encontre que lo mas normal es EAFP(easier ask forgiveness than
 ponian que existe el metodo replace, que me va a buscar el punto decimal, lo va a quitar, y solo lo va a hacer 1 vez
 de modo que cuando el cliente ingrese un numero asi tenga un decimal, lo va a reconocer como numero
 por que tambien estoy usando el metodo isdigit para verificar que sea un valor numerico.
+
+se agrego en otro momento otro replace para quitar los espacios en blanco, por si el cliente ingresa un valor con espacios, que el sistema
+reconoce como caracter no numerico
 """
-if(unitario.replace(".", "", 1).isdigit()):
+if(unitario.replace(".", "", 1).replace(" ","").isdigit()):
     """
     Voy a sobreescribir el valor que ingreso el cliente y con el mismo valor convertido al tipo de variable que necesito
     """
@@ -31,13 +34,13 @@ if(unitario.replace(".", "", 1).isdigit()):
     Aqui voy no solo a ver que si sea un numero, sino que el valor de unitario sea mayor que 0 por que no existen productos con precios
     negativos
     """
-    if(cantidad.replace(".", "", 1).isdigit() and unitario > 0):
+    if(cantidad.replace(".", "", 1).replace(" ","").isdigit() and unitario > 0):
         cantidad = float(cantidad)
         """
         Esta condicional tiene una condicion extra y es que para verificar que un numero sea entero, su modulo de 1 debe ser 0,
         entonces como no es posible comprar productos por partes, verificare que el valor ingresado sea un entero
         """
-        if(descuento.replace(".", "", 1).isdigit() and cantidad > 0 and cantidad%1 == 0):
+        if(descuento.replace(".", "", 1).replace(" ","").isdigit() and cantidad > 0 and cantidad%1 == 0):
             descuento = float(descuento)
             if(100 >= descuento >= 0 ):
                 """
