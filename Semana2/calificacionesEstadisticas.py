@@ -1,9 +1,10 @@
-def promediar(calificaciones, promedio):
-    if promedio != 0:
-        promedio = 0
-    for x in calificaciones:
-        promedio = promedio + x
-    return  promedio / len(calificaciones)
+def promediar (val1, val2):
+    val2=0
+    for x in val1:
+        val2 = val2 + x
+    return val2 /len(val1)
+
+
 
 calificaciones = []
 mayores = []
@@ -43,7 +44,7 @@ while act:
             if len(calificaciones) == 0:
                 print("No hay calificaciones")
             else:
-                promediar(calificaciones, promedio)
+                promedio = promediar(calificaciones, promedio)
                 if promedio == 100:
                     print("notas perfectas")
                 elif promedio >= 70:
@@ -57,7 +58,7 @@ while act:
             if len(calificaciones) == 0:
                 print("No hay calificaciones")
             else:
-                promediar()
+                promedio = promediar(calificaciones,promedio)
                 print(f"El promedio de las calificaciones hasta ahora es: {promedio}, en un total de {len(calificaciones)} calificaciones")
         case "4":
             if len(calificaciones) == 0:
