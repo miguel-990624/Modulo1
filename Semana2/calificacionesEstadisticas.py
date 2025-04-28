@@ -1,4 +1,4 @@
-def promediar (val1, val2):
+1def promediar (val1, val2):
     val2=0
     for x in val1:
         val2 = val2 + x
