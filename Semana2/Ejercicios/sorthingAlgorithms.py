@@ -56,3 +56,43 @@ def insertion_sort(arr):
         arr[j + 1] = key
     return arr
 
+"""
+Merge Sort:
+"""
+
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    
+    # Aqui se vuelve a llamar la funcion merge_sort, para dividir el arreglo en dos mitades otra vez, hasta que queden en un solo elemento
+    mid = len(arr) // 2
+    left_half = merge_sort(arr[:mid])
+    right_half = merge_sort(arr[mid:])
+    
+    # Aqui se ejecuta la funcion merge, que es la encargada de unir los dos arreglos, lo que pasa es que cada que arriba se llama la funcion merge_sort
+    # se va a ir dividiendo el arreglo en dos mitades, y cuando ya no haya mas mitades, se va a empezar a unir los arreglos
+    # de a pares, hasta que se vuelva a unir todo el arreglo
+    # Como en magic, cada uno de los merge_sort entran al stack pero abajo hay otro triger de merge, cuando ya no se pueden subdividir mas,
+    # se inician a resolver todos los merge que quedaron en el stack, si se dividio 3 veces, se van a resolver 3 triggers de merge, hasta
+    # limpiar el stack y que quede el arreglo ordenado
+    return merge(left_half, right_half)
+
+def merge(left, right):
+    result = []
+    i = j = 0
+    # Merge the two sorted lists
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    # Add remaining elements
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+# Example usage
+arr = [38, 27, 43, 9, 3, 82, 10]
+print("Sorted Array:", merge_sort(arr))
