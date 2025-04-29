@@ -93,4 +93,21 @@ def merge(left, right):
     result.extend(right[j:])
     return result
 
-""""""
+"""
+Quick sort:
+
+Como en un merge sort, se va a dividir el arreglo en dos mitades, desde el inicio, eligiendo un punto de pivote, el valor en la mitad del arreglo,
+leugo a partir de este punto, se divide el arreglo en dos partes, todo lo menor, a la izquierda y todo lo mayor a la derecha, estos dos sub arrays
+se van a dividir otra vez, a estos dos sub arrays se les busca un pivote a cada uno, se dividen en dos partes, y se repite el proceso hasta que los 
+elementos del array queden ordenados,
+"""
+
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [ x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+
