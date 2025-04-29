@@ -95,3 +95,89 @@ con el arreglo lista = [1, 2, 4, 5, 10, 20, 30], puedo hacer lista[5:]=[] y borr
 lista = [1, 2, 4, 5, 10].
 
 """
+lista.pop(2)
+print(lista)
+lista.remove(10)
+print(lista)
+del lista[5]
+print(lista)
+lista[5:]=[]
+print(lista)
+
+"""
+7. ¿Cómo buscamos elementos dentro de una lista?
+Para verificar si hay un elemento dentro de una lista usariamos el metodo in, que regresa un valor booleano como metodo de confirmacion, retomando el 
+arreglo, usariamos lista = [1, 2, 4, 5, 10], para verificar si el numero 10 esta presente podemos usar el metodo in en un print que nos verifica si esta o no
+print(10 in lista), nos deberia retornar un valor verdadero. Otro metodo para saber donde se encuentra un elemento en el arreglo es el metodo index, que nos
+dira el primer indice donde se encuentre ese elemento, print(lista.index(10)) que nos deberia decir que se encuentra en la posicion 4 de nuestro arreglo.
+El metodo count, nos dice cuantas veces esta un elemento en el arreglo, por ejemplo en el arreglo lista=[1, 2, 4, 5, 10] si queremos ver cuantas veces se
+repite el numero 10 hariamos un print(lista.count(10)) y debe retornar 1 
+ 
+"""
+print(10 in lista)
+print(lista.index(10))
+print(lista.count(10))
+
+"""
+8. ¿Cómo ordenamos los elementos de una lista?
+
+Para ordenar un arreglo, hay metodos que agilizan el proceso, el primero de ellos es sort que nos va a cambiar la lista que usemos para que se vea 
+arreglada de menor a mayor valor, nuestro arreglo lista ya esta ordenado asi pero haciendolo quedariamos con lista.sort() => [1, 2, 4, 5, 10], para
+ordenarlos de arriba a abajo seria ingresando el argumento reverse=True dentro del metodo .sort, asi lista.sort(reverse.True) => [10, 5, 4, 2, 1] con
+esto cambiamos el arreglo original y ahora esta en orden descendente. El segundo metodo seria .sorted, que nos va a sobreescribir el arreglo en un
+nuevo array con esto vamos a qudar con un segundo array sin modificar directamente el principal, lista3 = lista.sorted(), y al igual que con el
+sort acepta el argumento reverse=True. Adicional a esto el argumento key permite poner parametros personalizados, para ordenar segun el criterio que
+se necesite
+"""
+lista3 = [40, 10, 30, 20]
+lista4 = lista3.sorted()
+print(lista4)
+lista4 = lista3.sorted(reverse=True)
+print(lista4)
+
+
+"""
+9. ¿Cómo invertimos el orden de los elementos de una lista?
+Para invertir un arreglo podemos usar el metodo reverse, que nos va a modificar la lista y nos va a retornar la misma lista pero en este caso invertido
+lista.reverse() => [10, 5, 4, 2 , 1]. Otra manera posible de hacerlo seria sin modificar la lista actual usando slicing para en un nuevo arreglo
+asignar los valores invertidos, lista2 = lista[::-1]. ::-1 significa desde el inicio hasta hasta el final recorramelos hacia atras, esto deberia entregar
+un resultado asi lista2 = [1, 2, 4, 5, 10]
+"""
+
+lista3 = [10, 20, 30, 40]
+lista4 = lista3[::-1]
+print(lista4)
+lista3.reverse()
+print(lista3)
+
+"""
+10. ¿Cómo hacemos una copia de una lista?
+Para hacer una copia de un arreglo, debemos guardar los valores del arreglo original en un nuevo arreglo, el primero metodo seria usar el metodo
+copy lista2 = lista,copy() que nos va a entregar una lista 2 con todos los valores de la lista 1. El segundo metodo para copiar strings es recurriendo
+nuevamente a hacer slicing, podemos asignar a un nuevo arreglo todos los elementos de lista desde inicio hasta el final, usando lista2 = lista[:].
+El ultimo proceso que podriamos hacer es usar el constructor list() para declarar la nueva lista como una copia de la que nos interesa, haciendo entonces 
+lista2 = list(lista)
+"""
+
+lista3 = [10, 20, 30]
+lista4 = lista3.copy()
+lista4 = lista3[:]
+lista4 = list(lista3)
+
+"""
+11. ¿Cómo comprobamos si una lista está vacía?11. ¿Cómo comprobamos si una lista está vacía?
+
+Para verificar si una lista esta vacia tenemos varias opciones, todas deben ser comparaciones, si tenemos el arreglo vacio podemos entonces hacer un if que lo
+compare, if not(lista): deberia retornar verdad si la lista esta vacia por que la lista vacia equivale a booleano. if len(lista) == 0, nos permite ver
+si el lenght de la lista es 0, lo que significa que no tiene elementos adentro, if lista == [], esto la compara con una lista vacia y si son iguales
+retorna verdadero. Por ultimo el condicional if not any(lista): any nos retornaria falso por que no tiene valores, y con not retorna verdadero debido a 
+que no tiene valores.
+"""
+
+mi_lista = []
+
+if not mi_lista:
+    print("La lista está vacía")
+else:
+    print("La lista no está vacía")
+
