@@ -111,3 +111,18 @@ def quick_sort(arr):
     right = [x for x in arr if x > pivot]
     return quick_sort(left) + middle + quick_sort(right)
 
+
+
+"""
+Conceptos a entender:
+Los algoritmos que investigamos para ordenar, tienen una notacion "Big O", que es como la manera de medir eficiencia, que tanto tiempo toma o 
+recursos consume un algoritmo, por ejemplo recorrer un algoritmo como el bubble sort no tiene la misma eficiencia que el merge sort, partiendo 
+de que el tiempo que le toma al bubble sort recorrer el arreglo es O(n^2), mientras que el merge sort es O(n log n), donde n es la cantidad de 
+elementos que tiene el arreglo, y log n es la cantidad de veces que se va a dividir el arreglo.
+
+La jerarquia de los algoritmos de ordenamiento es la siguiente:
+0(1) -> O(log n) -> O(n) -> O(n log n) -> O(n^2) -> O(2^n) -> O(n!)
+cada uno siendo menos eficiente que el siguiente, por lo que si tenemos un arreglo de 1000 elementos, el bubble sort va a tardar mucho mas 
+que el merge sort, y seria increiblemente mas demorado para la ultima opcion, que siendo facotorial, seria la que mas demora en recorrer el
+arreglo.
+"""
