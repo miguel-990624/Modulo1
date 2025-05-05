@@ -24,6 +24,9 @@ class Mascota:
     """
     def set (self, key, value):
         self.data[key] = value
+def salir (x):
+    return not x
+
 
 def menu(opcion, control, arr):
     if opcion == 1:
@@ -39,6 +42,7 @@ def menu(opcion, control, arr):
         datosMascota = {"nombre": nombre, "edad":edad, "salud":salud}
         mascota = Mascota(datosMascota)
         arr.append(mascota)
+        print("Agregado correctamente")
     elif opcion == 2:
         if (len(arr) > 0):
             busqueda = input("Ingrese el nombre de la mascota que quiera remover del sistema: ")
@@ -58,28 +62,35 @@ def menu(opcion, control, arr):
                 print("no se encontro una mascota con ese nombre")
             else:
                 arr.pop(contador)
+                print(f"{busqueda} ha sido exitosamente removido")
         else:
             print("No hay datos en el sistema actualmente")
     elif opcion == 3:
         if (len(arr) > 0):
             contador = 1
+            print("Lista de mascotas: ")
             for i in arr:
                 print(f"{contador}. {i.get("nombre")}, tiene {i.get("edad")} y presenta enfermedad: {i.get("salud")}")
                 contador += 1
         else:
             print("No hay datos en el sistema actualmente")
     elif opcion == 4:
-        control = False
+        print("Cerrando operaciones")
     else:
         print("Opcion no valida")
 
 listaMascotas = []
 control = True
 while control == True:
-    opcion = int(input("""Ingrese una opcion:
+    opcion = int(input("""
+                    Gestor de mascotas
+                       Ingrese una opcion:
                         1. Añadir mascota al sistema
                         2. Remover mascota del sistema
                         3. Ver registro
                         4. Salir
                        """))
-    menu(opcion, control,listaMascotas)
+    menu(opcion, control, listaMascotas)
+    
+    if opcion == 4:
+        control = salir(control)
