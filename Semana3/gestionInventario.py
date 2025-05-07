@@ -25,37 +25,86 @@ def add ():
     else:
         print("El dato ingresado no es un valor valido, intente de nuevo")
 
+def update ():
+    print("Este producto ya se encuentra en su carrito")
+    cantidad = input(f"ingrese la cantidad de productos adicionar, cuenta actual {i.get("cantidad")}: ")
+    if cantidad.count(".") == 0 and cantidad.replace(" ","").isdigit():
+        cantidad = int(cantidad.replace(" ",""))
+        cantidad += i.get("cantidad")
+        i.set("cantidad", cantidad)
+        print(f"la cantidad fue correctamente actualizada, cantidad actual: {i.get("cantidad")}")
+    else:
+        print("El dato ingresado no es un valor valido, intente de nuevo")
+
 """
 ingresar productos 2
 """
 carrito = []
-contador = 0
-nombre = input("ingrese nombre del producto: ")
-if len(carrito) == 0:
-    add()
-else:
-    for i in carrito:
-        if nombre.lower() == i.get("nombre").lower():
-            print("Este producto ya se encuentra en su carrito")
-            cantidad = input(f"ingrese la cantidad de productos adicionar, cuenta actual {i.get("cantidad")}: ")
-            if cantidad.count(".") == 0 and cantidad.replace(" ","").isdigit():
-                cantidad = int(cantidad.replace(" ",""))
-                cantidad += i.get("cantidad")
-                i.set("cantidad", cantidad)
-                print(f"la cantidad fue correctamente actualizada, cantidad actual: {i.get("cantidad")}")
-            else:
-                print("El dato ingresado no es un valor valido, intente de nuevo")
-            break
-        elif (contador == len(carrito)):
+while True:
+    opcion = input("""
+        --- Menu de opciones---
+            1.  Agregar al carrito
+            2.  Buscar en el carrito
+            3.  Agregar mas productos
+            4.  Eliminar productos
+            5.  Valor total del carrito
+            6.  Salir
+          """)
+    if opcion == "1":
+        nombre = input("ingrese nombre del producto: ")
+        if len(carrito) == 0:
             add()
         else:
-            contador += 1
+            contador = 0
+            for i in carrito:
+                if nombre.lower() == i.get("nombre").lower():
+                    update()
+                    break
+                elif (contador == len(carrito)):
+                    add()
+                else:
+                    contador += 1
+    elif opcion == "2":
+        busqueda = input("ingresa el nombre del producto que buscas: ")
+        if len(carrito) != 0:
+            for i in carrito:
+                total =0
+                if busqueda.lower() == i.get("nombre").lower():
+                    total = i.get("cantidad") * i.get("precio")
+                    print(f"""
+                        El producto {i.get("nombre")} se encuentra en tu inventario
+                        hay {i.get("cantidad")}, con un precio unitario de {i.get("precio")} 
+                        para un total de: {total}
+                        """)
+                else:
+                    print(f"No se encontro el producto: {busqueda}. Intente agregarlo o escribirlo correctamente.")
+    elif opcion == "3":
+        nombre = input("ingrese nombre del producto: ")
+        for i in carrito:
+            if nombre.lower() == i.get("nombre").lower():
+                update()
+                break
+            else:
+                print("No hay productos con ese nombre")
+    elif opcion == "4":
+        nombre = input("ingrese nombre del producto: ")
+        contador = 0
+        for i in carrito:
+            if nombre.lower() == i.get("nombre").lower():
+                carrito.pop(contador)
+                break
+            else:
+                contador += 1
+                if contador == len(carrito):
+                    print(f"No se encontro el producto: {nombre}. Intente escribirlo correctamente.")
+    elif opcion == "5":
+        total = 0
+        for i in carrito:
+            total += (lambda cantidad, precio: cantidad * precio)(i.get("cantidad"), i.get("precio"))
+        print(f"El total del carrito es: {total}")
 
-"""
-Buscar por nombre
-"""
-busqueda = input("ingresa el nombre del producto que buscas: ")
-if len(carrito) != 0:
-    for i in carrito:
-        if busqueda.lower() == i.get("nombre").lower():
-            print("temporal")
+        print("en proceso")
+    elif opcion == "6":
+        break
+    else:
+        print("Opcion no valida, ingrese un numero del menu de opciones")
