@@ -62,6 +62,7 @@ while True:
                     break
                 elif (contador == len(carrito)-1):
                     add()
+
                 else:
                     contador += 1
     elif opcion == "2":
@@ -110,8 +111,9 @@ while True:
         if len(carrito) == 0:
             print("No hay elementos en su carrito")
         else:
-            for i in carrito:
-                total += (lambda cantidad, precio: cantidad * precio)(i.get("cantidad"), i.get("precio"))
+            total= sum(map(lambda i: i.get("cantidad") * i.get("precio"), carrito))
+            # for i in carrito:
+            #     total += (lambda cantidad, precio: cantidad * precio)(i.get("cantidad"), i.get("precio"))
             print(f"El total del carrito es: {total}")
     elif opcion == "6":
         break
